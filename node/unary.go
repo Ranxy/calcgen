@@ -13,3 +13,8 @@ func (n *UnaryNode) GenerateCode() string {
 func (n *UnaryNode) GetInput() []AlgebraNode {
 	return []AlgebraNode{n}
 }
+func (n *UnaryNode) Closures() Closures {
+	return func(e Env) Number {
+		return n.input.Closures()(e)
+	}
+}

@@ -11,12 +11,10 @@ import (
 	"github.com/Ranxy/calcgen/node"
 )
 
-// type Expression node.AlgebraNode
-
 type Number node.AlgebraNode
 type Variable node.AlgebraNode
 
-//line expr.l:14
+//line expr.l:12
 type yySymType struct {
 	yys      int
 	token    string
@@ -49,7 +47,7 @@ const yyEofCode = 1
 const yyErrCode = 2
 const yyInitialStackSize = 16
 
-//line expr.l:78
+//line expr.l:76
 
 //line yacctab:1
 var yyExca = [...]int8{
@@ -452,62 +450,62 @@ yydefault:
 
 	case 1:
 		yyDollar = yyS[yypt-1 : yypt+1]
-//line expr.l:35
+//line expr.l:33
 		{
 			yyVAL.expr = yyDollar[1].expr
 			yylex.(*Lexer).result = yyVAL.expr
 		}
 	case 2:
 		yyDollar = yyS[yypt-1 : yypt+1]
-//line expr.l:42
+//line expr.l:40
 		{
 			yyVAL.expr = node.NewLiteralNode(yyDollar[1].token)
 		}
 	case 3:
 		yyDollar = yyS[yypt-2 : yypt+1]
-//line expr.l:46
+//line expr.l:44
 		{
 			yyVAL.expr = yyDollar[2].variable
 		}
 	case 4:
 		yyDollar = yyS[yypt-3 : yypt+1]
-//line expr.l:50
+//line expr.l:48
 		{
 			yyVAL.expr = yyDollar[2].expr
 		}
 	case 5:
 		yyDollar = yyS[yypt-2 : yypt+1]
-//line expr.l:54
+//line expr.l:52
 		{
 			yyVAL.expr = node.NewChangeSignNode(yyDollar[2].expr)
 		}
 	case 6:
 		yyDollar = yyS[yypt-3 : yypt+1]
-//line expr.l:58
+//line expr.l:56
 		{
 			yyVAL.expr = node.NewPlusNode(yyDollar[1].expr, yyDollar[3].expr)
 		}
 	case 7:
 		yyDollar = yyS[yypt-3 : yypt+1]
-//line expr.l:62
+//line expr.l:60
 		{
 			yyVAL.expr = node.NewMinusNode(yyDollar[1].expr, yyDollar[3].expr)
 		}
 	case 8:
 		yyDollar = yyS[yypt-3 : yypt+1]
-//line expr.l:66
+//line expr.l:64
 		{
 			yyVAL.expr = node.NewMultiplicationNode(yyDollar[1].expr, yyDollar[3].expr)
 		}
 	case 9:
 		yyDollar = yyS[yypt-3 : yypt+1]
-//line expr.l:70
+//line expr.l:68
 		{
 			yyVAL.expr = node.NewDivisionNode(yyDollar[1].expr, yyDollar[3].expr)
 		}
 	case 10:
 		yyDollar = yyS[yypt-1 : yypt+1]
-//line expr.l:75
+//line expr.l:73
 		{
 			yyVAL.variable = node.NewVariableNodeX(yyDollar[1].token)
 		}

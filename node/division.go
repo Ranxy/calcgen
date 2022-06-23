@@ -13,3 +13,8 @@ func NewDivisionNode(left, right AlgebraNode) *DivisionNode {
 func (n *DivisionNode) GenerateCode() string {
 	return n.BinaryNode.GenerateCodeByOpt(BinaryOptDivision)
 }
+func (n *DivisionNode) Closures() Closures {
+	return func(e Env) Number {
+		return n.Left.Closures()(e).division(n.Right.Closures()(e))
+	}
+}

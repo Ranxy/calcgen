@@ -28,3 +28,9 @@ func (n *VariableNode) GenerateCode() string {
 func (n *VariableNode) GetInput() []AlgebraNode {
 	return []AlgebraNode{n}
 }
+
+func (n *VariableNode) Closures() Closures {
+	return func(e Env) Number {
+		return NewLiteralNode(e[n.name]).Closures()(e)
+	}
+}
